@@ -1,0 +1,26 @@
+{
+  "scheme_id": "MAHADBT_DTE_RCSMSSY",
+  "name": "Rajarshi Chhatrapati Shahu Maharaj Shikshan Shulkh Shishyavrutti Yojana — DTE",
+  "source_url": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA703C38E51A7F4D327BDEB7125DE0BA4AE1C51180C272281017EBEF6F7C",
+  "checked_date": "2026-10-29",
+  "purpose": "Demonstration of preliminary rule-consistency, not official government approval",
+  "conditions": {
+    "nationality_indian": true,
+    "maharashtra_domicile": true,
+    "income_max_inr": 800000,
+    "cap_admission": true,
+    "bonafide": true,
+    "professional_technical_course": true,
+    "private_or_deemed_university": false,
+    "other_scholarship": false,
+    "family_beneficiaries_max": 2,
+    "attendance_min_percent": 50,
+    "first_semester_exception": true,
+    "gap_years_max_exclusive": 2
+  },
+  "caveats": [
+    "Proof-of-concept checks a subset of eligibility conditions.",
+    "Passing is not an official scholarship sanction.",
+    "Check current GR and exceptions before use."
+  ]
+}
