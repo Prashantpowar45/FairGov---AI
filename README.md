@@ -21,3 +21,7 @@ Swagger: http://127.0.0.1:8000/docs
 `GET /validation`, `GET /metrics`, `POST /predict`, `POST /explain`, `POST /rag/retrieve`.
 
 Full project archive was generated separately in this conversation. Code upload is in progress; this README alone does not constitute a runnable project.
+
+## Google Colab ML Evaluation
+
+Open [`notebooks/FairGov_DTE_ML_Colab_Evaluation.ipynb`](notebooks/FairGov_DTE_ML_Colab_Evaluation.ipynb) in Google Colab and run cells in order. Includes 5,000-record synthetic generation, validation, XGBoost evaluation, SHAP waterfall, and manually expected boundary-case rule/ML comparisons. The Colab notebook clones the public repository; this requires internet access. It does not use real scholarship applicant labels. A separate self-contained notebook can be obtained from the project conversation.
