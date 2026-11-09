@@ -1,0 +1,26 @@
+# Virtual environments
+myenv/
+.venv/
+venv/
+ENV/
+
+# Secrets / local environment files
+.env
+*.env
+!.env.example
+
+# Local-only notebooks (not tracked in this repository)
+notebooks/
+
+# Python caches & test artifacts
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+**/.pytest_cache/
+
+# Generated runtime data, models, and reports (recreated by `python -m src.pipeline`)
+project/data/
+project/models/
+project/reports/
