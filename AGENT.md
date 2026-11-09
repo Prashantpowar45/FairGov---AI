@@ -414,13 +414,62 @@ Key thresholds (as of `checked_date: 2026-10-29`):
 
 ---
 
-## 11. Running & Testing
+## 11. Clone, Setup, Running & Testing
+
+> **Important for fresh clones:** `data/`, `models/`, `reports/`, and `.env` are gitignored. After cloning, you **must** run `python -m src.pipeline` once before calling `/evaluate`, `/predict`, `/explain`, `/validation`, or `/metrics` (otherwise those endpoints return `503 Run python -m src.pipeline`).
+
+### Fresh clone & setup (Linux / macOS)
 
 ```bash
-# From: project/ (with active venv)
-python -m src.pipeline      # generates data, validates, trains model
-uvicorn main:app --reload   # starts API at http://127.0.0.1:8000
-python -m pytest -q         # runs all tests (NOTE: use python -m pytest, NOT bare pytest)
+# 1. Clone repo and enter project directory
+git clone https://github.com/Prashantpowar45/FairGov---AI.git
+cd FairGov---AI/project
+
+# 2. Create virtual environment & install exact tested dependencies
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+
+# 3. Configure environment (optional — leave GEMINI_API_KEY empty for retrieval-only + English fallback)
+cp .env.example .env
+# Edit .env and set GEMINI_API_KEY=... (main.py auto-loads project/.env on startup)
+
+# 4. Generate synthetic dataset, validate, and train XGBoost model (required once)
+python -m src.pipeline
+
+# 5. Run test suite (NOTE: use python -m pytest, NOT bare pytest)
+python -m pytest -q
+
+# 6. Start FastAPI server (http://127.0.0.1:8000/docs)
+uvicorn main:app --reload
+```
+
+### Fresh clone & setup (Windows PowerShell)
+
+```powershell
+git clone https://github.com/Prashantpowar45/FairGov---AI.git
+cd FairGov---AI\project
+
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+
+copy .env.example .env
+# Edit .env to add GEMINI_API_KEY (optional)
+
+python -m src.pipeline
+python -m pytest -q
+uvicorn main:app --reload
+```
+
+### Quick smoke check once server is running
+
+```bash
+curl -s http://127.0.0.1:8000/
+curl -s -X POST http://127.0.0.1:8000/evaluate \
+  -H "Content-Type: application/json" \
+  -d '{"annual_income":950000,"maharashtra_domicile":1,"indian_national":1,"cap_admission":1,"bonafide":1,"professional_course":1,"private_or_deemed_university":0,"other_scholarship":0,"family_beneficiaries":1,"attendance_pct":40,"first_semester":0,"gap_years":0,"language":"English","top_k":3}'
 ```
 
 **Tests:**
